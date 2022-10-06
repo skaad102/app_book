@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 
-class AuthorCard extends StatelessWidget {
+class AuthorCard extends StatefulWidget {
   const AuthorCard({Key? key}) : super(key: key);
 
+  @override
+  State<AuthorCard> createState() => _AuthorCardState();
+}
+
+class _AuthorCardState extends State<AuthorCard> {
+  bool _like = false;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -45,10 +51,10 @@ class AuthorCard extends StatelessWidget {
           ),
           const Spacer(),
           IconButton(
-            onPressed: () => onPressButton(context),
-            icon: const Icon(
+            onPressed: () => {onPressButton(context)},
+            icon: Icon(
               Icons.favorite_border,
-              color: Colors.white,
+              color: _like ? Colors.red : Colors.white,
             ),
           ),
         ],
@@ -57,8 +63,10 @@ class AuthorCard extends StatelessWidget {
   }
 
   // onPressButton(BuildContext context) {}
-
   void onPressButton(BuildContext context) {
+    setState(() {
+      _like = !_like;
+    });
     const snackBar = SnackBar(
       content: Text('Favorite'),
       // animation: ProxyAnimation,
@@ -70,6 +78,6 @@ class AuthorCard extends StatelessWidget {
         ),
       ),
     );
-    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    _like ? ScaffoldMessenger.of(context).showSnackBar(snackBar) : null;
   }
 }
