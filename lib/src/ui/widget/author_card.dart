@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class AuthorCard extends StatefulWidget {
-  const AuthorCard({Key? key}) : super(key: key);
+  final String authorName;
+  final String title;
+  const AuthorCard({Key? key, required this.authorName, required this.title})
+      : super(key: key);
 
   @override
   State<AuthorCard> createState() => _AuthorCardState();
@@ -27,21 +30,21 @@ class _AuthorCardState extends State<AuthorCard> {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
+            children: [
               Text(
-                'Mike Katz',
-                style: TextStyle(
+                widget.authorName,
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 16,
                   fontWeight: FontWeight.w700,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 4,
               ),
               Text(
-                'Flutter Developer',
-                style: TextStyle(
+                widget.title,
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 14,
                   fontWeight: FontWeight.w700,

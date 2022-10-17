@@ -1,6 +1,5 @@
-import 'package:app_book/src/ui/widget/card1.dart';
-import 'package:app_book/src/ui/widget/card2.dart';
-import 'package:app_book/src/ui/widget/card3.dart';
+import 'package:app_book/src/ui/page/explore_page.dart';
+import 'package:app_book/src/ui/page/recipes_page.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -12,7 +11,10 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _selectedIndex = 0;
-  static List<Widget> page = const [Card1(), Card2(), Card3()];
+  static List<Widget> page = [
+    ExplorePage(),
+    RecipesPage(),
+  ];
 
   void _onItemTapped(int index) {
     setState(() {

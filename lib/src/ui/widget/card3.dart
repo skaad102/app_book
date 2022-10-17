@@ -1,16 +1,27 @@
 import 'package:flutter/material.dart';
 
+import '../../model/explore_recipe.dart';
+
 class Card3 extends StatelessWidget {
-  const Card3({Key? key}) : super(key: key);
+  final ExploreRecipe recipe;
+  const Card3({Key? key, required this.recipe}) : super(key: key);
+
+  List<Widget> createChips() {
+    final chips = <Widget>[];
+    recipe.tags.take(6).forEach((element) {
+      final chip = Chip(
+        label: Text(element),
+        backgroundColor: Colors.black.withOpacity(0.07),
+        labelStyle: const TextStyle(color: Colors.black),
+      );
+      chips.add(chip);
+    });
+    return chips;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      // width: 350,
-      // height: 500,
-      // decoration: BoxDecoration(
-      //     color: Color.fromARGB(31, 12, 191, 90),
-      //     borderRadius: BorderRadius.circular(10)),
       constraints: const BoxConstraints.expand(
         height: 500,
         width: 350,
@@ -54,32 +65,7 @@ class Card3 extends StatelessWidget {
             child: Wrap(
               alignment: WrapAlignment.start,
               spacing: 8,
-              children: [
-                Chip(
-                    label: Text('Vegan',
-                        style: Theme.of(context).textTheme.bodyText1),
-                    onDeleted: () {}),
-                Chip(
-                    label: Text('Healthy',
-                        style: Theme.of(context).textTheme.bodyText1),
-                    onDeleted: () {}),
-                Chip(
-                    label: Text('Carrots',
-                        style: Theme.of(context).textTheme.bodyText1),
-                    onDeleted: () {}),
-                Chip(
-                    label: Text('Vegan',
-                        style: Theme.of(context).textTheme.bodyText1),
-                    onDeleted: () {}),
-                Chip(
-                  label: Text('Carrots',
-                      style: Theme.of(context).textTheme.bodyText1),
-                ),
-                Chip(
-                  label: Text('Vegan',
-                      style: Theme.of(context).textTheme.bodyText1),
-                ),
-              ],
+              children: createChips(),
             ),
           ),
         ],

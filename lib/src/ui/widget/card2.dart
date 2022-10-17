@@ -2,8 +2,11 @@ import 'package:app_book/src/ui/theme/fooderlich_theme.dart';
 import 'package:app_book/src/ui/widget/author_card.dart';
 import 'package:flutter/material.dart';
 
+import '../../model/explore_recipe.dart';
+
 class Card2 extends StatelessWidget {
-  const Card2({Key? key}) : super(key: key);
+  final ExploreRecipe recipe;
+  const Card2({Key? key, required this.recipe}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +19,7 @@ class Card2 extends StatelessWidget {
                 image: AssetImage('assets/bread.jpg'), fit: BoxFit.cover)),
         child: Stack(
           children: [
-            const AuthorCard(),
+            AuthorCard(authorName: recipe.authorName, title: recipe.role),
             Positioned(
               bottom: 16,
               right: 16,
