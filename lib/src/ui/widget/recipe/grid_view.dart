@@ -13,6 +13,8 @@ class RecipesGridView extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       child: GridView.builder(
         itemCount: recipes.length,
+        //     gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+        // maxCrossAxisExtent: 400),
         gridDelegate:
             const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
         itemBuilder: (context, index) {

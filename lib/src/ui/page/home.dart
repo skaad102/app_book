@@ -14,6 +14,7 @@ class _HomeState extends State<Home> {
   static List<Widget> page = [
     ExplorePage(),
     RecipesPage(),
+    Container(color: Colors.blue),
   ];
 
   void _onItemTapped(int index) {
